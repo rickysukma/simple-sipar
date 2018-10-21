@@ -41,13 +41,16 @@
                             <td colspan="2"><b>Alamat</b> : <?php echo $wisata->address ?></td>
                         </tr>
                         <tr>
+                            <td colspan="2"><b>Wilayah</b> : <?php echo $wisata->city ?></td>
+                        </tr>
+                        <tr>
                             <td colspan="2"><b>Telp</b> : <?php echo $wisata->telp ?></td>
                         </tr>
                         <tr>
                             <td colspan="2"><strong>Tiket Masuk</strong></td>
                         </tr>
                         <tr>
-                            <td colspan="2">Wekday : Rp <?php echo $wisata->weekday ?><br>Wekend : Rp <?php echo $wisata->weekend ?></td>
+                            <td colspan="2">Weekday : Rp <?php echo $wisata->weekday ?><br>Weekend : Rp <?php echo $wisata->weekend ?></td>
                         </tr>
                     </table>
                 </div>
@@ -55,9 +58,8 @@
                     <span class="i-pane i-green">
                         <i class="i-neat"></i>
                     </span>
-                    <h4>Bukit Penjamur Bengkayang</h4>
-                    <p>
-                        Lokasi Bukit Jamur ini terletak di Kabupaten Bengkayang, tepatnya di Kelurahan Bumi Emas Jaku Malunu, Kalimantan Barat. Jarak Bukit Jamur kurang lebih 6 km dari pusat kota Bengkayang. Letak lokasi ini memang sangat strategis dan sangat mudah diakses. Dari Bukit Jamur ini Boboers dapat melihat indahnya lautan awan bak negeri dongeng, apalagi saat sang surya mulai menyembulkan sinarnya secara perlahan, dijamin pemandangan ini akan menjadi salah satu moment terbaik seumur hidup.                    </p>
+                    <h4><?php echo $wisata->title ?></h4>
+                    <p><?php echo $wisata->desc ?></p>
                 </div>
             </div>
 <!--            <div class="block">
@@ -73,6 +75,7 @@
                         overflow: hidden;
                         border: 1px solid #ccc;
                         background-color: #f1f1f1;
+                        margin-bottom: 45px;
                     }
 
                     /* Style the buttons inside the tab */
@@ -99,10 +102,12 @@
 
                     /* Style the tab content */
                     .tabcontent {
+                        padding-top: -45px;
                         display: none;
                         padding: 6px 12px;
                         border: 1px solid #ccc;
                         border-top: none;
+                        margin-bottom: 55px;
                     }
                 </style>
                 <script>

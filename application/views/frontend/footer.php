@@ -1,5 +1,5 @@
 
-			<div class="subFooter" style="position: fixed;bottom: 0">Copyright 2013. All rights reserved.</div>
+			<div class="subFooter" style="position: fixed;bottom: 0">Copyright <?php echo date('Y') ?>. All rights reserved.</div>
 			<nav id="menu">
 				<ul>
 					<!-- <li>

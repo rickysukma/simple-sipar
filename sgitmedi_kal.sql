@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 16, 2018 at 09:37 PM
--- Server version: 5.7.23
--- PHP Version: 5.6.30
+-- Host: localhost
+-- Generation Time: Oct 21, 2018 at 03:25 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sgitmedi_kal`
+-- Database: `pariwisata`
 --
 
 -- --------------------------------------------------------
@@ -102,22 +102,24 @@ CREATE TABLE `maininfo` (
   `desc` text NOT NULL,
   `address` varchar(250) NOT NULL,
   `telp` varchar(200) NOT NULL,
-  `price` varchar(200) NOT NULL,
+  `weekday` varchar(200) NOT NULL,
+  `weekend` varchar(100) NOT NULL,
   `image` varchar(200) NOT NULL,
   `image1` varchar(200) NOT NULL,
   `image2` varchar(200) NOT NULL,
   `image3` varchar(200) NOT NULL,
   `image4` varchar(200) NOT NULL,
-  `image5` varchar(200) NOT NULL
+  `image5` varchar(200) NOT NULL,
+  `link` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `maininfo`
 --
 
-INSERT INTO `maininfo` (`idmaininfo`, `idcity`, `title`, `desc`, `address`, `telp`, `price`, `image`, `image1`, `image2`, `image3`, `image4`, `image5`) VALUES
-(1, 1, 'Bukit Penjamur Bengkayang', 'Lokasi Bukit Jamur ini terletak di Kabupaten Bengkayang, tepatnya di Kelurahan Bumi Emas Jaku Malunu, Kalimantan Barat. Jarak Bukit Jamur kurang lebih 6 km dari pusat kota Bengkayang. Letak lokasi ini memang sangat strategis dan sangat mudah diakses. Dari Bukit Jamur ini Boboers dapat melihat indahnya lautan awan bak negeri dongeng, apalagi saat sang surya mulai menyembulkan sinarnya secara perlahan, dijamin pemandangan ini akan menjadi salah satu moment terbaik seumur hidup.', 'Bhakti Mulya, Kec. Bengkayang, Kabupaten Bengkayang, Kalimantan Barat 79213', '0229887655', 'Wekday : Rp 12.000<br>Wekend : Rp 15.000', '1.jpg', '2.jpg', '3.jpg', '', '', ''),
-(2, 2, 'Pintu Masuk Air Terjun Tikalong', 'Air Terjun Banangar atau sering disebut juga Melanggar, Mananggar, dan Menaggar adalah patahan Sungai Landak yang menjadi wisata alam berupa air terjun yang berada di Kecamatan Air Besar, kabupaten Landak. Letak air terjun ini berada di hulu Sungai Landak, sekitar 290 kilometer arah timur laut Pontianak, ibu kota Provinsi Kalimantan Barat. Ada yang mengatakan bahwa Air Terjun Mananggar (sering juga disebut Air Terjun Melanggar, Menanggar, atau Banangar) merupakan Niagara dari Borneo.<br><br>\r\n\r\nAir Terjun Melanggar memiliki ketinggian sekitar 60 meter dan lebar lebih dari 60 meter yang menyajikan pesona alam yang sangat indah. Akses ke dasar air terjun ini masih sangat sulit sekali. Jalan yang hanya setapak itu tertutup belukar sehingga wisatawan lebih senang menikmati pesonanya dari atas air terjun. Untuk menikmati keindahannya, Anda harus memiliki kesabaran. Anda akan melintasi perjalanan yang panjang, jauh, dan berliku.<br><br>\r\n\r\nUntuk melihat air terjun ini, Anda membutuhkan waktu enam hingga tujuh jam perjalanan dari Pontianak hingga ke Kecamatan Air Besar. Dari sana, Anda harus melakukan perjalanan lagi menggunakan perahu. Akan tetapi, perjalanan panjang dan melelahkan itu akan terbayar kala Anda melihat keindahan buih air yang bertebaran di sekitar area, belum lagi suasana sejuk yang diberikan akan membuat lelah segera hilang. Tidak ada sarana dan prasarana di lokasi air tejun, jadi diharapkan membawa bekal yang cukup selama menempuh perjalanan.<br><br>\r\n\r\nKeunikan dari Air Terjun Banangar ini adalah terdapat danau yang cukup lebar berada di bawah air terjun yang berbentuk bulat dan dapat digunakan untuk mandi, berenang dan memancing ikan ataupun udang. Sedangkan di kiri atas terdapat sebuah tempat untuk memohon rezeki kepada Tuhan sang Pencipta, kegiatan yang sudah dilakukan ratusan tahun yang lalu sampai sekarang ini. Selanjutnya, di atas terdapat Gunung Pejapa dengan ketinggian 1.019 meter yang mengelilingi air terjun ini. Sekeliling lokasi masih terlindungi dengan lebatnya hutan basah khas Kalimantan yang masih utuh. Dan yang terakhir, di seberang sungai terdapat Gua Sanjan yang terdapat air terjun kecil dan sungai kecil.', 'Tunang, Mempawah Hulu, Kabupaten Landak, Kalimantan Barat 79363', '049585', 'Wekday : Rp 12.000<br>Wekend : Rp 15.000', '1.jpg', '2.jpg', '3.jpg', '', '', '');
+INSERT INTO `maininfo` (`idmaininfo`, `idcity`, `title`, `desc`, `address`, `telp`, `weekday`, `weekend`, `image`, `image1`, `image2`, `image3`, `image4`, `image5`, `link`) VALUES
+(1, 1, 'Bukit Penjamur Bengkayang', 'Lokasi Bukit Jamur ini terletak di Kabupaten Bengkayang, tepatnya di Kelurahan Bumi Emas Jaku Malunu, Kalimantan Barat. Jarak Bukit Jamur kurang lebih 6 km dari pusat kota Bengkayang. Letak lokasi ini memang sangat strategis dan sangat mudah diakses. Dari Bukit Jamur ini Boboers dapat melihat indahnya lautan awan bak negeri dongeng, apalagi saat sang surya mulai menyembulkan sinarnya secara perlahan, dijamin pemandangan ini akan menjadi salah satu moment terbaik seumur hidup.', 'Bhakti Mulya, Kec. Bengkayang, Kabupaten Bengkayang, Kalimantan Barat 79213', '0229887655', '12.000', '15.000', '1.jpg', '2.jpg', '3.jpg', '', '', '', 'http://localhost/asik-asik'),
+(2, 2, 'Pintu Masuk Air Terjun Tikalong', 'Air Terjun Banangar atau sering disebut juga Melanggar, Mananggar, dan Menaggar adalah patahan Sungai Landak yang menjadi wisata alam berupa air terjun yang berada di Kecamatan Air Besar, kabupaten Landak. Letak air terjun ini berada di hulu Sungai Landak, sekitar 290 kilometer arah timur laut Pontianak, ibu kota Provinsi Kalimantan Barat. Ada yang mengatakan bahwa Air Terjun Mananggar (sering juga disebut Air Terjun Melanggar, Menanggar, atau Banangar) merupakan Niagara dari Borneo.<br><br>\r\n\r\nAir Terjun Melanggar memiliki ketinggian sekitar 60 meter dan lebar lebih dari 60 meter yang menyajikan pesona alam yang sangat indah. Akses ke dasar air terjun ini masih sangat sulit sekali. Jalan yang hanya setapak itu tertutup belukar sehingga wisatawan lebih senang menikmati pesonanya dari atas air terjun. Untuk menikmati keindahannya, Anda harus memiliki kesabaran. Anda akan melintasi perjalanan yang panjang, jauh, dan berliku.<br><br>\r\n\r\nUntuk melihat air terjun ini, Anda membutuhkan waktu enam hingga tujuh jam perjalanan dari Pontianak hingga ke Kecamatan Air Besar. Dari sana, Anda harus melakukan perjalanan lagi menggunakan perahu. Akan tetapi, perjalanan panjang dan melelahkan itu akan terbayar kala Anda melihat keindahan buih air yang bertebaran di sekitar area, belum lagi suasana sejuk yang diberikan akan membuat lelah segera hilang. Tidak ada sarana dan prasarana di lokasi air tejun, jadi diharapkan membawa bekal yang cukup selama menempuh perjalanan.<br><br>\r\n\r\nKeunikan dari Air Terjun Banangar ini adalah terdapat danau yang cukup lebar berada di bawah air terjun yang berbentuk bulat dan dapat digunakan untuk mandi, berenang dan memancing ikan ataupun udang. Sedangkan di kiri atas terdapat sebuah tempat untuk memohon rezeki kepada Tuhan sang Pencipta, kegiatan yang sudah dilakukan ratusan tahun yang lalu sampai sekarang ini. Selanjutnya, di atas terdapat Gunung Pejapa dengan ketinggian 1.019 meter yang mengelilingi air terjun ini. Sekeliling lokasi masih terlindungi dengan lebatnya hutan basah khas Kalimantan yang masih utuh. Dan yang terakhir, di seberang sungai terdapat Gua Sanjan yang terdapat air terjun kecil dan sungai kecil.', 'Tunang, Mempawah Hulu, Kabupaten Landak, Kalimantan Barat 79363', '049585', 'Wekday : Rp 12.000<br>Wekend : Rp 15.000', '', '1.jpg', '2.jpg', '3.jpg', '', '', '', '');
 
 -- --------------------------------------------------------
 

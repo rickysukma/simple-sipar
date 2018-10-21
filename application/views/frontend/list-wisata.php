@@ -1,20 +1,21 @@
-<?php for ($i=0; $i < 10; $i++) { 
-	
- ?>
-<div id="content" data-search="<?php echo $i ?>">
+<div class="subHeader"><i class="i-home i-small"></i>Ocean / List Tempat</div>
+<?php foreach ($pariwisatas as $pariwisata) {
+    ?>
+
+<div id="content" data-search="<?php echo $pariwisata['title'] ?>">
 				
                 <div class="mainIconPane" style="float: left; margin: 5px; width: 20%;">
-                    <img style="width: 100%;" src="http://kal.1itmedia.co.id/template/img/data/1/1.jpg">
+                    <img style="width: 100%;" src="<?php echo base_url('assets/img/pariwisata/');echo $pariwisata['image'] ?>">
                 </div>                
                 <div class="mainIconPane" style="float: left; width: 70%;">
-                    <h4><a href="http://kal.1itmedia.co.id/details.php?id=1">Bukit Penjamur Bengkayang</a></h4>
-                    <p>                        
-                        <!--<img style="width: 25%;" src="http://kal.1itmedia.co.id/template/img/Five-Stars.png"><br>-->
-                        Lokasi : Bhakti Mulya, Kec. Bengkayang, Kabupaten Bengkayang, Kalimantan Barat 79213                    </p>
+                    <h4><a href="<?php echo base_url('pariwisata/detail_wisata/').$pariwisata['idmaininfo'] ?>"><?php echo $pariwisata['title'] ?></a></h4>
+                    <p>Lokasi : <?php echo $pariwisata['address'] ?><br>
+                    </p>
+                    <span style="border-left: 15px solid lightblue;">&nbsp;<a style="text-decoration: none;" href="<?php echo base_url().'wilayah/'.$pariwisata['idcity']?>"><?php echo $pariwisata['city']?></a></span>
                 </div>
                 <div class="mainIconPane" style="width: 7%;">
-                    <a href="https://www.google.com/maps/place/Bhakti Mulya, Kec. Bengkayang, Kabupaten Bengkayang, Kalimantan Barat 79213">
-                        <img src="http://kal.1itmedia.co.id/template/img/navigation.png">
+                    <a href="<?php echo $pariwisata['link'] ?>">
+                        <img class="" src="<?php echo base_url('assets/img/navigation.png') ?>">
                     </a>
                 </div> 
             
@@ -22,4 +23,6 @@
 </div>
 <hr>
 
-<?php } ?>
+<?php
+    }
+?>

@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pariwisata extends CI_Controller {
-	
+	function __construct(){
+  parent::__construct();
+  $this->load->model('maininfo');
+ }
 
 	/**
 	 * Index Page for this controller.
@@ -22,9 +25,20 @@ class Pariwisata extends CI_Controller {
 	public function index()
 
 	{
+
+		$data['pariwisatas'] = $this->maininfo->get_wisata();
 		$this->load->view('frontend/head');
 		$this->load->view('frontend/nav');
-		$this->load->view('frontend/list-wisata');
+		$this->load->view('frontend/list-wisata',$data);
 		$this->load->view('frontend/footer');
+	}
+
+	public function detail_wisata($id){
+		$data['wisatas'] = $this->maininfo->get_wisata_byid($id);
+		$this->load->view('frontend/head');
+		$this->load->view('frontend/nav');
+		$this->load->view('frontend/detail-wisata',$data);
+		$this->load->view('frontend/footer');
+
 	}
 }

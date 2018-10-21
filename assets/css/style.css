@@ -145,6 +145,11 @@ pre
 	padding: 10px;
 }
 
+.kota{
+	border-left: 6px solid red;
+    background-color: lightgrey;
+}
+
 /*********************/
 
 @media all and (min-width: 900px) {

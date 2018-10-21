@@ -34,11 +34,21 @@ class Pariwisata extends CI_Controller {
 	}
 
 	public function detail_wisata($id){
+		$data['hotels'] = $this->maininfo->gethotel_by($id);
 		$data['wisatas'] = $this->maininfo->get_wisata_byid($id);
 		$this->load->view('frontend/head');
 		$this->load->view('frontend/nav');
 		$this->load->view('frontend/detail-wisata',$data);
 		$this->load->view('frontend/footer');
 
+	}
+
+	public function tes($id){
+		$data['hotels'] = $this->maininfo->gethotel_by($id);
+		// $data['wisatas'] = $this->maininfo->get_wisata_byid($id);
+		// $this->load->view('frontend/head');
+		// $this->load->view('frontend/nav');
+		$this->load->view('tes',$data);
+		// $this->load->view('frontend/footer');	
 	}
 }

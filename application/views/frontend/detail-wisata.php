@@ -10,17 +10,57 @@
                 <section class="slider">
                     <div class="flexslider">
                         <ul class="slides">
-                            <li>
-                                <img src="http://kal.1itmedia.co.id/template/img/data/1/1.jpg" />
-                            </li>
-                                                        <li>
-                                <img src="http://kal.1itmedia.co.id/template/img/data/1/2.jpg" />
-                            </li>
-                                                        <li>
-                                <img src="http://kal.1itmedia.co.id/template/img/data/1/3.jpg" />
-                            </li>
-                                                    </ul>
-                                            </div>
+                            <?php
+                            if (empty($wisata->image)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image' />
+                                    </li>";
+                                }
+                                if (empty($wisata->image1)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image1' />
+                                    </li>";
+                                }
+
+                                if (empty($wisata->image2)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image2' />
+                                    </li>";
+                                }
+
+                                if (empty($wisata->image3)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image3' />
+                                    </li>";
+                                }
+
+                                if (empty($wisata->image4)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image4' />
+                                    </li>";
+                                }
+
+                                if (empty($wisata->image5)) {
+                                    echo "";
+                                }else{
+                                    echo "<li>
+                                        <img src='$wisata->image5' />
+                                    </li>";
+                                }
+                            
+                            ?>
+                        </ul>
+                    </div>
                 </section>
             </div>
             <!-- End Banner -->
@@ -102,7 +142,7 @@
 
                     /* Style the tab content */
                     .tabcontent {
-                        padding-top: -45px;
+                        margin-top: -45px;
                         display: none;
                         padding: 6px 12px;
                         border: 1px solid #ccc;
@@ -131,27 +171,32 @@
                                         <button class="tablinks" onclick="openCity(event, '3')">EVENT</button>
                                     </div>
                 
-                                <div id="1" class="tabcontent">
+                <div id="1" class="tabcontent">
                     <!--<h3>HOTEL</h3>-->
                     <p>                        
                     <table style="width: 100%; border: 0px;">
-                                                <tr>
-                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="http://kal.1itmedia.co.id/template/img/data/1/1.jpg" /></td>
-                            <td style="margin: 0px; padding: 5px;"><b>Hotel a</b><br>022 - 9848485<br>Lokasi : jl. hotel</td>
-                            <td style="width: 15%; padding: 0px; margin: 0px;"><a href="https://www.google.com/maps/place/jl. hotel">
-                                    <img src="http://kal.1itmedia.co.id/template/img/navigation.png">
+                        <!-- hotel -->
+                      <?php if (!empty($hotels)) {
+                          
+                        foreach ($hotels as $hotel) {
+                             ?>
+                            <tr>
+                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $hotel['image'] ?>" /></td>
+                            <td style="margin: 0px; padding: 5px;"><b><?php echo $hotel['title'] ?></b><br><?php echo $hotel['telp']?><br>Lokasi : <?php echo $hotel['address'] ?></td>
+                            <td style="width: 15%; padding: 0px; margin: 0px;">
+                                <a href="<?php echo $hotel['link'] ?>">
+                                    <img src="<?php echo base_url('assets/img/navigation.png') ?>">
                                 </a>
                             </td>
                         </tr>
-                                                <tr>
-                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="http://kal.1itmedia.co.id/template/img/data/1/2.jpg" /></td>
-                            <td style="margin: 0px; padding: 5px;"><b>Hotel b</b><br>022 - 9848485<br>Lokasi : jl. hotel</td>
-                            <td style="width: 15%; padding: 0px; margin: 0px;"><a href="https://www.google.com/maps/place/jl. hotel">
-                                    <img src="http://kal.1itmedia.co.id/template/img/navigation.png">
-                                </a>
-                            </td>
-                        </tr>
-                                            </table>                        
+                             <?php
+                         } 
+                     }else{
+                        echo "Tidak ada data hotel terdekat disini";
+                     }
+                      ?>
+                        <!--  -->
+                    </table>                        
                     </p>
                 </div>
                                 <div id="2" class="tabcontent">
@@ -173,4 +218,4 @@
 
 <?php }}else{
     echo "<center><h1>Data tidak ditemukan</h1><br><a href='".base_url()."'>Home</a></center>";
-} ?>
+} ?>    

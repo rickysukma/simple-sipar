@@ -34,6 +34,13 @@ class Pariwisata extends CI_Controller {
 	}
 
 	public function detail_wisata($id){
+		if (!$id) {
+			redirect(base_url());
+		} else {
+
+		
+		$data['events'] = $this->maininfo->getevent_by($id);
+		$data['kuliners'] = $this->maininfo->getkuliner_by($id);
 		$data['hotels'] = $this->maininfo->gethotel_by($id);
 		$data['wisatas'] = $this->maininfo->get_wisata_byid($id);
 		$this->load->view('frontend/head');
@@ -41,6 +48,7 @@ class Pariwisata extends CI_Controller {
 		$this->load->view('frontend/detail-wisata',$data);
 		$this->load->view('frontend/footer');
 
+		}
 	}
 
 	public function tes($id){

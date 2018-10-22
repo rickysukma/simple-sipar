@@ -11,11 +11,50 @@ class Maininfo extends CI_Model{
         return $res->result_array(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
     }
 
-    public function gethotel_by($id){
+    public function gethotel_by($id){ //hotel
         $this->db->select('*');
         $this->db->from('info_ads');
         $this->db->where('idmaininfo',$id);
         $this->db->where('status','0');
+        $this->db->where('idcat','1');
+        // $query = $this->db->get();
+        // if ($query->num_rows() > 0 ) {
+        //     $results = $query->result();
+        // } else {
+        //     return 0;
+        // }
+        $this->db->order_by('idinfoads','desc');
+        $res = $this->db->get();
+        return $res->result_array();
+        
+    }
+
+    public function getevent_by($id){ //event
+        $this->db->select('*');
+        $this->db->from('info_ads');
+        $this->db->where('idmaininfo',$id);
+        $this->db->where('status','0');
+        $this->db->where('idcat','3');
+
+        // $query = $this->db->get();
+        // if ($query->num_rows() > 0 ) {
+        //     $results = $query->result();
+        // } else {
+        //     return 0;
+        // }
+        $this->db->order_by('idinfoads','desc');
+        $res = $this->db->get();
+        return $res->result_array();
+        
+    }
+
+    public function getkuliner_by($id){ //kuliner
+        $this->db->select('*');
+        $this->db->from('info_ads');
+        $this->db->where('idmaininfo',$id);
+        $this->db->where('status','0');
+        $this->db->where('idcat','2');
+
         // $query = $this->db->get();
         // if ($query->num_rows() > 0 ) {
         //     $results = $query->result();

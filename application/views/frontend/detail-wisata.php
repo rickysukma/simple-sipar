@@ -199,18 +199,60 @@
                     </table>                        
                     </p>
                 </div>
-                                <div id="2" class="tabcontent">
+                <div id="2" class="tabcontent">
                     <!--<h3>INFO KULINER</h3>-->
                     <p>                        
                     <table style="width: 100%; border: 0px;">
-                        Data tidak di temukan.                    </table>                        
+                        <!-- hotel -->
+                      <?php if (!empty($kuliners)) {
+                          
+                        foreach ($kuliners as $kuliner) {
+                             ?>
+                            <tr>
+                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $kuliner['image'] ?>" /></td>
+                            <td style="margin: 0px; padding: 5px;"><b><?php echo $kuliner['title'] ?></b><br><?php echo $kuliner['telp']?><br>Lokasi : <?php echo $kuliner['address'] ?></td>
+                            <td style="width: 15%; padding: 0px; margin: 0px;">
+                                <a href="<?php echo $kuliner['link'] ?>">
+                                    <img src="<?php echo base_url('assets/img/navigation.png') ?>">
+                                </a>
+                            </td>
+                        </tr>
+                             <?php
+                         } 
+                     }else{
+                        echo "Tidak ada data kuliner terdekat disini";
+                     }
+                      ?>
+                        <!--  -->
+                    </table>                        
                     </p>
                 </div>
                                 <div id="3" class="tabcontent">
                     <!--<h3>EVENT</h3>-->
                     <p>                        
                     <table style="width: 100%; border: 0px;">
-                        Data tidak di temukan.                    </table>                        
+                        <!-- hotel -->
+                      <?php if (!empty($events)) {
+                          
+                        foreach ($events as $event) {
+                             ?>
+                            <tr>
+                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $event['image'] ?>" /></td>
+                            <td style="margin: 0px; padding: 5px;"><b><?php echo $event['title'] ?></b><br><?php echo $event['telp']?><br>Lokasi : <?php echo $event['address'] ?></td>
+                            <td style="width: 15%; padding: 0px; margin: 0px;">
+                                <a href="<?php echo $event['link'] ?>">
+                                    <img src="<?php echo base_url('assets/img/navigation.png') ?>">
+                                </a>
+                            </td>
+                        </tr>
+                             <?php
+                         } 
+                     }else{
+                        echo "Tidak ada data event terdekat disini";
+                     }
+                      ?>
+                        <!--  -->
+                    </table>                        
                     </p>
                 </div>
                                 

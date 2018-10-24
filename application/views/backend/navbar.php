@@ -3,7 +3,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="<?php echo base_url('admin'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
@@ -15,9 +15,9 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
-            <a class="dropdown-item" href="login.html">Wisata</a>
-            <a class="dropdown-item" href="register.html">Info Ads</a>
-            <a class="dropdown-item" href="forgot-password.html">Kategori</a>
+            <a class="dropdown-item" href="<?php echo base_url('backend/wisata'); ?>">Wisata</a>
+            <a class="dropdown-item" href="<?php echo base_url('backend/ads'); ?>">Info Ads</a>
+            <a class="dropdown-item" href="<?php echo base_url('backend/kategori'); ?>">Kategori</a>
             <!-- <div class="dropdown-divider"></div> -->
             <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
             <!-- <a class="dropdown-item" href="404.html">404 Page</a> -->

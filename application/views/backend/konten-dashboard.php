@@ -22,7 +22,7 @@
                   </div>
                   <div class="mr-5"><?php echo $count_wisata; ?> Tempat Wisata!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="<?php echo base_url('backend/wisata'); ?>">
                   <span class="float-left">View Details</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -120,7 +120,6 @@
                 </table>
               </div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
           <!-- table -->
 

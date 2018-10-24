@@ -11,6 +11,12 @@ class Maininfo extends CI_Model{
         return $res->result_array(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
     }
 
+    public function count_wisata(){
+        $this->db->select('*');
+        $this->db->from('maininfo');
+        $cnt = $this->db->count_all_results();
+    }
+
     public function gethotel_by($id){ //hotel
         $this->db->select('*');
         $this->db->from('info_ads');

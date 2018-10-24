@@ -20,7 +20,7 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-map"></i>
                   </div>
-                  <div class="mr-5">26 Tempat Wisata!</div>
+                  <div class="mr-5"><?php echo $count_wisata; ?> Tempat Wisata!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -36,7 +36,7 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-hotel"></i>
                   </div>
-                  <div class="mr-5">11 Hotel!</div>
+                  <div class="mr-5"><?php echo $count_hotel; ?> Hotel!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -52,7 +52,7 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-concierge-bell"></i>
                   </div>
-                  <div class="mr-5">123 Info Kuliner!</div>
+                  <div class="mr-5"><?php echo $count_kuliner; ?> Info Kuliner!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -68,7 +68,7 @@
                   <div class="card-body-icon">
                     <i class="fas fa-fw fa-calendar-alt"></i>
                   </div>
-                  <div class="mr-5">13 Event!</div>
+                  <div class="mr-5"><?php echo $count_kuliner; ?> Event!</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -84,45 +84,45 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Data Table Example</div>
+              Data Table Wisata</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>Nama Wisata</th>
+                      <th>Lokasi</th>
+                      <th>No Telp</th>
+                      <th>Kota</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>Nama Wisata</th>
+                      <th>Lokasi</th>
+                      <th>No Telp</th>
+                      <th>Kota</th>
                     </tr>
                   </tfoot>
+                  <!-- foreach wisata -->
+                  <?php foreach ($wisatas as $wisata) {
+                    ?>
                   <tbody>
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
+                      <th><?php echo $wisata['title'] ?></th>
+                      <th><a href="<?php echo $wisata['link'] ?>"><?php echo $wisata['address'] ?></a></th>
+                      <th><?php echo $wisata['telp'] ?></th>
+                      <th><?php echo $wisata['city'] ?></th>
                     </tr>
                   </tbody>
+                <?php } ?>
+                  <!--  -->
                 </table>
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
+          <!-- table -->
 
         </div>
         <!-- /.container-fluid -->
@@ -131,7 +131,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+              <span>Copyright © Your Website <?php echo date('Y') ?></span>
             </div>
           </div>
         </footer>
@@ -140,4 +140,4 @@
       <!-- /.content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
+    <!-- /#wrapper

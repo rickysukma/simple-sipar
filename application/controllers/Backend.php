@@ -2,7 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Backend extends CI_Controller {
-
+		function __construct(){
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->model('maininfo');
+	
+		if($this->session->userdata('status') != 'login'){
+			redirect(base_url("login"));
+		}
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,9 +28,18 @@ class Backend extends CI_Controller {
 	 */
 	public function index()
 	{
+		$count_wisata = $this->db->query('SELECT * FROM maininfo');
+		$count_hotel = $this->db->query('SELECT * FROM info_ads WHERE idcat = 1');
+		$count_kuliner = $this->db->query('SELECT * FROM info_ads WHERE idcat = 2');
+		$count_event = $this->db->query('SELECT * FROM info_ads WHERE idcat = 3');
+		$data['count_wisata'] = $count_wisata->num_rows();
+		$data['count_hotel'] = $count_hotel->num_rows();
+		$data['count_kuliner'] = $count_kuliner->num_rows();
+		$data['count_event'] = $count_event->num_rows();
+		$data['wisatas'] = $this->maininfo->get_wisata();
 		$this->load->view('backend/header');
 		$this->load->view('backend/navbar');
-		$this->load->view('backend/konten-dashboard');
+		$this->load->view('backend/konten-dashboard',$data);
 		$this->load->view('backend/footer');
 
 	}
@@ -34,4 +51,5 @@ class Backend extends CI_Controller {
 		$this->load->view('frontend/list-wisata');
 		$this->load->view('frontend/footer');
 	}
+
 }

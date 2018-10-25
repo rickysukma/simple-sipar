@@ -43,9 +43,10 @@ class Wisata extends CI_Controller {
 
 	
 	public function create_wisata(){
+		$data['kotas'] = $this->maininfo->get_kota();
 		$this->load->view('backend/header');
 		$this->load->view('backend/navbar');
-		$this->load->view('backend/wisata/create-wisata');
+		$this->load->view('backend/wisata/create-wisata',$data);
 		$this->load->view('backend/footer');
 	}
 }

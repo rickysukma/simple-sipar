@@ -86,6 +86,17 @@ class Maininfo extends CI_Model{
             return 0;
         }
     }
+
+
+    public function get_kota(){
+        $this->db->select('*');
+        $this->db->from('city');
+        $res=$this->db->get();
+        return $res->result_array();
+
+    }
+
+    // -------------------------------------------------------------------------------------- //
  
     public function tambah($data){
         $res = $this->db->insert('sampah', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel

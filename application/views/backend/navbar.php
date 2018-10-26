@@ -18,6 +18,7 @@
             <a class="dropdown-item" href="<?php echo base_url('backend/wisata'); ?>">Wisata</a>
             <a class="dropdown-item" href="<?php echo base_url('backend/ads'); ?>">Info Ads</a>
             <a class="dropdown-item" href="<?php echo base_url('backend/kategori'); ?>">Kategori</a>
+            <a class="dropdown-item" href="<?php echo base_url('backend/kota'); ?>">Kota</a>
             <!-- <div class="dropdown-divider"></div> -->
             <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
             <!-- <a class="dropdown-item" href="404.html">404 Page</a> -->

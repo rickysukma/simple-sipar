@@ -53,6 +53,14 @@ class Backend extends CI_Controller {
 		$this->load->view('backend/footer');
 	}
 
+	public function kota(){
+		$data['kotas'] = $this->maininfo->get_kota();
+		$this->load->view('backend/header');
+		$this->load->view('backend/navbar');
+		$this->load->view('backend/master-kota',$data);
+		$this->load->view('backend/footer');
+	}
+
 	
 
 

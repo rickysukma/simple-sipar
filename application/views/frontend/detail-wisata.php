@@ -15,14 +15,14 @@
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image' />
+                                        <img src='".base_url('assets/img/pariwisata/')."$wisata->image' />
                                     </li>";
                                 }
                                 if (empty($wisata->image1)) {
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image1' />
+                                        <img src='".base_url('assets/img/pariwisata/')."/$wisata->image1' />
                                     </li>";
                                 }
 
@@ -30,7 +30,7 @@
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image2' />
+                                        <img src='".base_url('assets/img/pariwisata/')."$wisata->image2' />
                                     </li>";
                                 }
 
@@ -38,7 +38,7 @@
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image3' />
+                                        <img src='".base_url('assets/img/pariwisata/')."$wisata->image3' />
                                     </li>";
                                 }
 
@@ -46,7 +46,7 @@
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image4' />
+                                        <img src='".base_url('assets/img/pariwisata/')."$wisata->image4' />
                                     </li>";
                                 }
 
@@ -54,7 +54,7 @@
                                     echo "";
                                 }else{
                                     echo "<li>
-                                        <img src='$wisata->image5' />
+                                        <img src='".base_url('assets/img/pariwisata/')."$wisata->image5' />
                                     </li>";
                                 }
                             

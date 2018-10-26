@@ -14,7 +14,31 @@
             <li class="breadcrumb-item active">Tambah</li>             
           </ol>
 
-
+          <?php
+            $notif = $this->session->flashdata('notif');
+            $gagal = $this->session->flashdata('gagal');
+            if (isset($notif)) {
+               ?>
+               <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Success!</strong> <?php echo $notif; ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+               <?php
+             }elseif(isset($gagal)){
+                ?>
+               <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Failed!</strong> <?php echo $gagal; ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+               <?php
+             } else {
+              echo "";
+             }
+          ?>
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
@@ -101,6 +125,26 @@
                   <div class="col-md-12">
                     <div class="form-label-group">
                       <input name="gambar" type="file"  id="gambar" class="form-control" placeholder="" required="required">
+                      <label for="gambar"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <div class="form-label-group">
+                      <input name="gambar1" type="file"  id="gambar1" class="form-control" placeholder="">
+                      <label for="gambar1"></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <div class="form-label-group">
+                      <input name="gambar2" type="file"  id="gambar" class="form-control" placeholder="">
                       <label for="gambar"></label>
                     </div>
                   </div>

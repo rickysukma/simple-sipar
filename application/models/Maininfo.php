@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Maininfo extends CI_Model{
+
     public function get_wisata(){
         $this->db->select('*');
         $this->db->from('maininfo wisata');
@@ -41,14 +42,16 @@ class Maininfo extends CI_Model{
         $this->db->where('idmaininfo',$id);
         $this->db->where('status','0');
         $this->db->where('idcat','3');
-
-        // $query = $this->db->get();
-        // if ($query->num_rows() > 0 ) {
-        //     $results = $query->result();
-        // } else {
-        //     return 0;
-        // }
         $this->db->order_by('idinfoads','desc');
+        $res = $this->db->get();
+        return $res->result_array();
+        
+    }
+
+    public function getkota_by($id){ //event
+        $this->db->select('*');
+        $this->db->from('city');
+        $this->db->where('idcity',$id);
         $res = $this->db->get();
         return $res->result_array();
         
@@ -96,10 +99,18 @@ class Maininfo extends CI_Model{
 
     }
 
+    // --------------------------------------------------------------------------------------//
+
+    // Upload image
     // -------------------------------------------------------------------------------------- //
  
-    public function tambah($data){
-        $res = $this->db->insert('sampah', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
+    public function tambah_maininfo($data){
+        $res = $this->db->insert('maininfo', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
+        return $res; // Kode ini digunakan untuk mengembalikan hasil $res
+    }
+
+    public function tambah_kota($data){
+        $res = $this->db->insert('city', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
         return $res; // Kode ini digunakan untuk mengembalikan hasil $res
     }
  

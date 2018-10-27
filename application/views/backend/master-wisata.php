@@ -33,19 +33,10 @@
                       <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Nama Wisata</th>
-                      <th>Lokasi</th>
-                      <th>No Telp</th>
-                      <th>Kota</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </tfoot>
+                  <tbody style="font-size: 14px">
                   <!-- foreach wisata -->
                   <?php foreach ($wisatas as $wisata) {
                     ?>
-                  <tbody style="font-size: 14px">
                     <tr>
                       <th><?php echo $wisata['title'] ?></th>
                       <th><a href="<?php echo $wisata['link'] ?>"><?php echo $wisata['address'] ?></a></th>
@@ -53,12 +44,11 @@
                       <th><?php echo $wisata['city'] ?></th>
                       <th>
                         <a class="fas fa-edit fa-fw" href="<?php echo base_url('wisata/edit/').$wisata['idmaininfo'] ?>"></a>
-                        <a style="color: red" class="fas fa-trash fa-fw" data-toggle="modal" data-target="#hapusModal"></a>
+                        <a style="color: red" class="fas fa-trash fa-fw" data-toggle="modal" data-target="#hapusModal<?php echo $wisata['idmaininfo'] ?>"></a>
                       </th>
                     </tr>
-                  </tbody>
                     <!-- Delete Modal-->
-                      <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="hapusModal<?php echo $wisata['idmaininfo'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -77,6 +67,7 @@
                       </div>
                 <?php } ?>
                   <!--  -->
+                  </tbody>
                 </table>
               </div>
             </div>

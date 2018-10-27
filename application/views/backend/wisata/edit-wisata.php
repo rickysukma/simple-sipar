@@ -138,6 +138,8 @@
                 <div class="form-row">
                   <div class="col-md-12">
                     <div class="form-label-group">
+                      <img id="gambar_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image) ?>" height="20%" width="20%" class="img img-thumbnail">
+                      <input type="hidden" name="gambar_" value="<?php echo $wisata->image ?>">
                       <input name="gambar" type="file"  id="gambar" class="form-control" placeholder="" required="required">
                       <label for="gambar"></label>
                     </div>
@@ -148,6 +150,8 @@
                 <div class="form-row">
                   <div class="col-md-12">
                     <div class="form-label-group">
+                      <img id="gambar1_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image1) ?>" height="20%" width="20%" class="img img-thumbnail">
+                      <input type="hidden" name="gambar1_" value="<?php echo $wisata->image1 ?>">
                       <input name="gambar1" type="file"  id="gambar1" class="form-control" placeholder="">
                       <label for="gambar1"></label>
                     </div>
@@ -158,7 +162,9 @@
                 <div class="form-row">
                   <div class="col-md-12">
                     <div class="form-label-group">
-                      <input name="gambar2" type="file"  id="gambar" class="form-control" placeholder="">
+                      <img id="gambar2_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image2) ?>" height="20%" width="20%" class="img img-thumbnail">
+                      <input type="hidden" name="gambar2_" value="<?php echo $wisata->image2 ?>">
+                      <input name="gambar2" type="file"  id="gambar2" class="form-control" placeholder="">
                       <label for="gambar"></label>
                     </div>
                   </div>
@@ -188,3 +194,40 @@
     </div>
     <!-- /#wrapper -->
 <?php } ?>
+<script type="text/javascript">
+  document.getElementById("gambar2").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("gambar2_thumb").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+
+document.getElementById("gambar1").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("gambar1_thumb").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+
+document.getElementById("gambar").onchange = function () {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        document.getElementById("gambar_thumb").src = e.target.result;
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+};
+</script>

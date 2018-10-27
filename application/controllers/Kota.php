@@ -55,6 +55,39 @@ class Kota extends CI_Controller {
 		}
 	}
 
+	public function update($id){
+		if (!$id) {
+			redirect(base_url('wisata'));
+		} else {
+			$where = $id;
+			$data = array('city' => $this->input->post('kota'));
+			if($this->maininfo->update_kota($data,$where)){
+				$this->session->set_flashdata('notif','Berhasil mengedit data');
+      			redirect(base_url('kota/edit/'.$id));
+			} else {
+				$this->session->set_flashdata('gagal','Gagal mengedit data');
+      		redirect(base_url('kota/create_kota'));
+			}
+		}
+	}
+
+	public function delete($id){
+		if (!$id) {
+			redirect(base_url('wisata'));
+		} else {
+			$where = $id;
+			if($this->maininfo->hapus_kota($where)){
+				$this->session->set_flashdata('notif','Berhasil menghapus data');
+      			redirect(base_url('backend/kota'));
+			} else {
+				$this->session->set_flashdata('notif','Berhasil menghapus data');
+      			redirect(base_url('backend/kota'));
+			}
+		}
+	}
+
+
+
 	public function simpan(){
 		$kota = $this->input->post('kota');
 		$data = array('city' => $kota);

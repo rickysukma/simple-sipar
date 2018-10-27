@@ -50,7 +50,7 @@
               <!-- <a style="float: right;" href="<?php echo base_url('wisata/') ?>create_wisata" class="btn btn-primary btn-sm">Tambah</a> -->
             </div>
             <div class="card-body">
-              <?php echo form_open_multipart('kota/simpan');?>
+              <?php echo form_open_multipart('kota/update/'.$kota['idcity']);?>
               <div class="form-group">
               <div class="form-row">
                 <div class="col-md-12">

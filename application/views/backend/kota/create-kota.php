@@ -10,7 +10,7 @@
               <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item">Master</li>
-            <li class="breadcrumb-item active">Kota</li>
+            <li class="breadcrumb-item active"><a href="<?php echo base_url('backend/kota') ?>">Kota</a></li>
             <li class="breadcrumb-item active">Tambah</li>             
           </ol>
 

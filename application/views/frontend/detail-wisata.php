@@ -181,7 +181,7 @@
                         foreach ($hotels as $hotel) {
                              ?>
                             <tr>
-                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $hotel['image'] ?>" /></td>
+                            <td style="width: 35%; height: 35%;padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo base_url('assets/img/iklan/').$hotel['image'] ?>" /></td>
                             <td style="margin: 0px; padding: 5px;"><b><?php echo $hotel['title'] ?></b><br><?php echo $hotel['telp']?><br>Lokasi : <?php echo $hotel['address'] ?></td>
                             <td style="width: 15%; padding: 0px; margin: 0px;">
                                 <a href="<?php echo $hotel['link'] ?>">
@@ -209,7 +209,7 @@
                         foreach ($kuliners as $kuliner) {
                              ?>
                             <tr>
-                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $kuliner['image'] ?>" /></td>
+                            <td style="width: 35%; height: 35%;padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo base_url('assets/img/iklan/').$kuliner['image'] ?>" /></td>
                             <td style="margin: 0px; padding: 5px;"><b><?php echo $kuliner['title'] ?></b><br><?php echo $kuliner['telp']?><br>Lokasi : <?php echo $kuliner['address'] ?></td>
                             <td style="width: 15%; padding: 0px; margin: 0px;">
                                 <a href="<?php echo $kuliner['link'] ?>">
@@ -237,7 +237,7 @@
                         foreach ($events as $event) {
                              ?>
                             <tr>
-                            <td style="width: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo $event['image'] ?>" /></td>
+                            <td style="width: 35%; height: 35%; padding: 0px; margin: 0px;"><img style="width: 100%;" src="<?php echo base_url('assets/img/iklan/').$event['image'] ?>" /></td>
                             <td style="margin: 0px; padding: 5px;"><b><?php echo $event['title'] ?></b><br><?php echo $event['telp']?><br>Lokasi : <?php echo $event['address'] ?></td>
                             <td style="width: 15%; padding: 0px; margin: 0px;">
                                 <a href="<?php echo $event['link'] ?>">

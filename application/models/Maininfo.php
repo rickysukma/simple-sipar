@@ -48,6 +48,14 @@ class Maininfo extends CI_Model{
         
     }
 
+    public function getkat(){
+        $this->db->select('*');
+        $this->db->from('cat_ads');
+        $this->db->order_by('idcat','desc');
+        $res = $this->db->get();
+        return $res->result_array();
+    }
+
     public function getkota_by($id){ //event
         $this->db->select('*');
         $this->db->from('city');
@@ -55,6 +63,16 @@ class Maininfo extends CI_Model{
         $res = $this->db->get();
         return $res->result_array();
         
+    }
+
+    public function getinfoads(){
+        $this->db->select('*');
+        $this->db->from('info_ads');
+        $this->db->join('cat_ads','cat_ads.idcat=info_ads.idcat','left');
+        $this->db->order_by('idinfoads','asc');
+        $res = $this->db->get();
+        return $res->result_array();
+
     }
 
     public function getkuliner_by($id){ //kuliner
@@ -70,6 +88,16 @@ class Maininfo extends CI_Model{
         // } else {
         //     return 0;
         // }
+        $this->db->order_by('idinfoads','desc');
+        $res = $this->db->get();
+        return $res->result_array();
+        
+    }
+
+    public function getinfoads_by($id){ //kuliner
+        $this->db->select('*');
+        $this->db->from('info_ads');
+        $this->db->where('idinfoads',$id);
         $this->db->order_by('idinfoads','desc');
         $res = $this->db->get();
         return $res->result_array();
@@ -113,16 +141,40 @@ class Maininfo extends CI_Model{
         $res = $this->db->insert('city', $data); // Kode ini digunakan untuk memasukan record baru kedalam sebuah tabel
         return $res; // Kode ini digunakan untuk mengembalikan hasil $res
     }
- 
-    public function update($data, $where){
-        $this->db->where('id_sampah',$where);
-        $res = $this->db->update('sampah',$data); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
+
+    public function tambah_ads($data){
+        $res = $this->db->insert('info_ads',$data);
+        return $res;
+    }
+
+    public function update_ads($data,$where){
+        $this->db->where('idinfoads',$where);
+        $res = $this->db->update('info_ads',$data);
         return $res;
     }
  
-    public function hapus($where){
-        $this->db->where('id_sampah',$where);
-        $res = $this->db->delete('sampah'); // Kode ini digunakan untuk menghapus record yang sudah ada
+    public function update_kota($data, $where){
+        $this->db->where('idcity',$where);
+        $res = $this->db->update('city',$data); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
+        return $res;
+    }
+
+    public function update_wisata($data,$where){
+        $this->db->where('idmaininfo',$where);
+        $res = $this->db->update('maininfo',$data);
+        return $res;
+    }
+ 
+    public function hapus_kota($where){
+        $this->db->where('idcity',$where);
+        $res = $this->db->delete('city'); // Kode ini digunakan untuk menghapus record yang sudah ada
+
+        return;
+    }
+
+    public function hapus_wisata($where){
+        $this->db->where('idmaininfo',$where);
+        $res = $this->db->delete('maininfo'); // Kode ini digunakan untuk menghapus record yang sudah ada
 
         return;
     }

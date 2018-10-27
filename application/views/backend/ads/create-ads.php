@@ -10,7 +10,7 @@
               <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item">Master</li>
-            <li class="breadcrumb-item active"><a href="<?php echo base_url('backend/wisata') ?>">Wisata</a></li>
+            <li class="breadcrumb-item active"><a href="<?php echo base_url('backend/ads') ?>">Wisata</a></li>
             <li class="breadcrumb-item active">Tambah</li>             
           </ol>
 
@@ -43,26 +43,31 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-map"></i>
-              Data Table Wisata 
+              Data Table Iklan 
               <!-- <a style="float: right;" href="<?php echo base_url('wisata/') ?>create_wisata" class="btn btn-primary btn-sm">Tambah</a> -->
             </div>
             <div class="card-body">
-              <?php echo form_open_multipart('wisata/simpan');?>
-                <div class="form-group">
+              <?php echo form_open_multipart('ads/simpan');?>
+              <div class="form-group">
               <div class="form-row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-label-group">
-                    <input name="title" type="text" id="namawisata" class="form-control" placeholder="Nama Tempat Wisata" required="required" autofocus="autofocus">
-                    <label for="namawisata">Nama Tempat Wisata</label>
+                    <input name="title" type="text" id="namawisata" class="form-control" placeholder="Nama Iklan" required="required" autofocus="autofocus">
+                    <label for="namawisata">Nama Iklan</label>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="form-group">
+            <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <select class="form-control" name="kota">
+                    <select id="wisata" class="js-select form-control" name="kategori">
+                      <option> - Pilih kategori terkait - </option>
                       <?php 
-                        foreach ($kotas as $kota) {
+                        foreach ($kategoris as $kategori) {
                           ?>
-                          <option value="<?php echo $kota['idcity'] ?>"><?php echo $kota['city'] ?></option>
+                          <option value="<?php echo $kategori['idcat'] ?>"><?php echo $kategori['namecat'] ?></option>
                           <?php
                         }
                       ?>
@@ -70,32 +75,41 @@
                     </select>
                   </div>
                 </div>
-              </div>
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <select id="wisata" class="js-select form-control" name="idmaininfo">
+                      <option> - Pilih Wisata terkait - </option>
+                      <?php 
+                        foreach ($wisatas as $wisata) {
+                          ?>
+                          <option value="<?php echo $wisata['idmaininfo'] ?>"><?php echo $wisata['title'] ?></option>
+                          <?php
+                        }
+                      ?>
+
+                    </select>
+                  </div>
+                </div>
             </div>
+          </div>
             <div class="form-group">
               <div class="form-label-group">
-                <textarea class="form-control" required="" placeholder="Deskripsi tempat" required="" rounded-0" id="desc" name="desc" rows="3"></textarea>
+                <textarea class="form-control" required="" placeholder="Deskripsi terkait" required="" rounded-0" id="desc" name="desc" rows="3"></textarea>
                 <label for="desc"></label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <textarea class="form-control" placeholder="Alamat wisata" required="" rounded-0" id="alamat" name="alamat" rows="3"></textarea>
+                <textarea class="form-control" placeholder="Alamat terkait" required="" rounded-0" id="alamat" name="alamat" rows="3"></textarea>
                 <label for="alamat"></label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-label-group">
-                    <input name="weekday" type="text"  id="weekday" class="form-control" placeholder="Harga Tiket Weekdays" required="required">
-                    <label for="weekday">Tiket Weekdays</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-label-group">
-                    <input name="weekend" type="text" id="weekend" class="form-control" placeholder="Harga Tiket Weekend" required="required">
-                    <label for="weekend">Tiket Weekend</label>
+                    <input name="tiket" type="text"  id="weekday" class="form-control" placeholder="Harga Tiket Masuk" required="required">
+                    <label for="weekday">HTM</label>
                   </div>
                 </div>
               </div>
@@ -130,26 +144,6 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <input name="gambar1" type="file"  id="gambar1" class="form-control" placeholder="">
-                      <label for="gambar1"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <input name="gambar2" type="file"  id="gambar" class="form-control" placeholder="">
-                      <label for="gambar"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             <button class="btn btn-primary btn-block" href="">Tambah</button>
               </form>
             </div>
@@ -172,4 +166,9 @@
       <!-- /.content-wrapper -->
 
     </div>
-    <!-- /#wrapper
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- <!-- /#wrapper -->
+
+      <script>
+        $(document).ready(function() { $(".js-select").select2(); });
+    </script>

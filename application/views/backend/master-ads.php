@@ -10,7 +10,7 @@
               <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item">Master</li>
-            <li class="breadcrumb-item active">kota</li>            
+            <li class="breadcrumb-item active">Iklan</li>            
           </ol>
            <?php
             $notif = $this->session->flashdata('notif');
@@ -41,36 +41,42 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Data Table kota 
-              <a style="float: right;" href="<?php echo base_url('kota/') ?>create_kota" class="btn btn-primary btn-sm">Tambah</a>
+              Data Table Iklan 
+              <a style="float: right;" href="<?php echo base_url('ads/') ?>create_ads" class="btn btn-primary btn-sm">Tambah</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataKota" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Nama kota</th>
+                      <th>Iklan</th>
+                      <th>Alamat</th>
+                      <th>Kategori</th>
+                      <th>Telepon</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody style="font-size: 14px">
                   <!-- foreach kota -->
-                  <?php foreach ($kotas as $kota) {
+                  <?php foreach ($iklans as $iklan) {
                     ?>
                     <tr>
-                      <th><?php echo $kota['city'] ?></th>
+                      <th><?php echo $iklan['title'] ?></th>
+                      <th><?php echo $iklan['address'] ?></th>
+                      <th><?php echo $iklan['namecat'] ?></th>
+                      <th><?php echo $iklan['telp'] ?></th>
                       <th>
-                        <a class="fas fa-edit fa-fw" href="<?php echo base_url('kota/edit/').$kota['idcity'] ?>"></a>
-                        <a style="color: red" class="fas fa-trash fa-fw" data-toggle="modal" data-target="#hapusModal<?php echo $kota['idcity'] ?>"></a>
+                        <a class="fas fa-edit fa-fw" href="<?php echo base_url('ads/edit/').$iklan['idinfoads'] ?>"></a>
+                        <a style="color: red" class="fas fa-trash fa-fw" data-toggle="modal" data-target="#hapusModal<?php echo $iklan['idinfoads'] ?>"></a>
                       </th>
                     </tr>
                 <?php } ?>
                 </tbody>
               </table>
                     <!-- Delete Modal-->
-                    <?php foreach ($kotas as $hapus) {
+                    <?php foreach ($iklans as $hapus) {
                       ?>
-                      <div class="modal fade" id="hapusModal<?php echo $hapus['idcity'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="hapusModal<?php echo $hapus['idinfoads'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">

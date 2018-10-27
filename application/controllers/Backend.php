@@ -61,6 +61,14 @@ class Backend extends CI_Controller {
 		$this->load->view('backend/footer');
 	}
 
+	public function ads(){
+		$data['iklans'] = $this->maininfo->getinfoads();
+		$this->load->view('backend/header');
+		$this->load->view('backend/navbar');
+		$this->load->view('backend/master-ads',$data);
+		$this->load->view('backend/footer');
+	}
+
 	
 
 

@@ -11,7 +11,7 @@
                     <h4><a href="<?php echo base_url('pariwisata/detail_wisata/').$pariwisata['idmaininfo'] ?>"><?php echo $pariwisata['title'] ?></a></h4>
                     <p>Lokasi : <?php echo $pariwisata['address'] ?><br>
                     </p>
-                    <span style="border-left: 15px solid lightblue;">&nbsp;<a style="text-decoration: none;" href="<?php echo base_url().'wilayah/'.$pariwisata['idcity']?>"><?php echo $pariwisata['city']?></a></span>
+                    <span style="border-left: 15px solid lightblue;">&nbsp;<a style="text-decoration: none;" href="<?php echo base_url().'pariwisata/kota/'.$pariwisata['idcity']?>"><?php echo $pariwisata['city']?></a></span>
                 </div>
                 <div class="mainIconPane" style="width: 7%;">
                     <a href="<?php echo $pariwisata['link'] ?>">

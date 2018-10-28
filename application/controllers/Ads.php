@@ -101,13 +101,30 @@ class Ads extends CI_Controller {
 			redirect(base_url('wisata'));
 		} else {
 			$where = $id;
-			$data = array('city' => $this->input->post('kota'));
-			if($this->maininfo->update_kota($data,$where)){
+			$title = $this->input->post('title');
+			$idmaininfo = $this->input->post('idmaininfo');
+			$idcat = $this->input->post('kategori');
+			$desc = $this->input->post('desc');
+			$address = $this->input->post('alamat');
+			$price = $this->input->post('tiket');
+			$weekend = $this->input->post('weekend');
+			$telp = $this->input->post('notelp');
+			$link = $this->input->post('link');
+			$data = array('idmaininfo' => $idmaininfo,
+      						  'title' => $title,
+      						  'desc' => $desc,
+      						  'idcat' => $idcat,
+      						  'address' => $address,
+      						  'price' => $price,
+      						  'telp' => $telp,
+      						  'link' => $link);
+
+			if($this->maininfo->update_ads($data,$where)){
 				$this->session->set_flashdata('notif','Berhasil mengedit data');
-      			redirect(base_url('kota/edit/'.$id));
+      			redirect(base_url('ads/edit/'.$id));
 			} else {
 				$this->session->set_flashdata('gagal','Gagal mengedit data');
-      		redirect(base_url('kota/create_kota'));
+      		redirect(base_url('ads/create_kota'));
 			}
 		}
 	}

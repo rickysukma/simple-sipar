@@ -48,7 +48,7 @@
               <!-- <a style="float: right;" href="<?php echo base_url('wisata/') ?>create_wisata" class="btn btn-primary btn-sm">Tambah</a> -->
             </div>
             <div class="card-body">
-              <?php echo form_open_multipart('ads/update'.$iklan['idinfoads'])?>
+              <?php echo form_open_multipart('ads/update/'.$iklan['idinfoads'])?>
               <div class="form-group">
               <div class="form-row">
                 <div class="col-md-12">
@@ -157,7 +157,7 @@
                   <div class="col-md-12">
                     <div class="form-label-group">
                       <img id="gambar_thumb" src="<?php echo base_url('assets/img/iklan/'.$iklan['image']) ?>" height="20%" width="20%" style="margin-bottom: 10px" class="img img-thumbnail">
-                      <?php echo form_open_multipart('ads/update_gambar/'.$iklan['idmaininfo']);?>
+                      <?php echo form_open_multipart('ads/update_gambar/'.$iklan['idinfoads']);?>
                       <input name="gambar" type="file"  id="gambar" class="" placeholder="" required="required">
                       <label for="gambar"></label>
                       <button class="btn btn-success">Upload</button>

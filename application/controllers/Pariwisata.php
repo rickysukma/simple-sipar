@@ -27,10 +27,25 @@ class Pariwisata extends CI_Controller {
 	{
 
 		$data['pariwisatas'] = $this->maininfo->get_wisata();
-		$this->load->view('frontend/head');
-		$this->load->view('frontend/nav');
+		$data['kotas'] = $this->maininfo->get_kota();
+		$data['title'] = "Home";
+		$this->load->view('frontend/head',$data);
+		$this->load->view('frontend/nav',$data);
 		$this->load->view('frontend/list-wisata',$data);
-		$this->load->view('frontend/footer');
+		$this->load->view('frontend/footer',$data);
+	}
+
+	public function kota($id)
+
+	{
+
+		$data['pariwisatas'] = $this->maininfo->get_wisata_bykota($id);
+		$data['kotas'] = $this->maininfo->get_kota();
+		$data['title'] = "Home";
+		$this->load->view('frontend/head',$data);
+		$this->load->view('frontend/nav',$data);
+		$this->load->view('frontend/list-wisata',$data);
+		$this->load->view('frontend/footer',$data);
 	}
 
 	public function detail_wisata($id){
@@ -43,13 +58,17 @@ class Pariwisata extends CI_Controller {
 		$data['kuliners'] = $this->maininfo->getkuliner_by($id);
 		$data['hotels'] = $this->maininfo->gethotel_by($id);
 		$data['wisatas'] = $this->maininfo->get_wisata_byid($id);
-		$this->load->view('frontend/head');
+		$data['kotas'] = $this->maininfo->get_kota();
+		$data['title'] = "Wisata";
+		$this->load->view('frontend/head',$data);
 		$this->load->view('frontend/nav');
 		$this->load->view('frontend/detail-wisata',$data);
 		$this->load->view('frontend/footer');
 
 		}
 	}
+
+
 
 	public function tes($id){
 		$data['hotels'] = $this->maininfo->gethotel_by($id);

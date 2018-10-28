@@ -12,6 +12,16 @@ class Maininfo extends CI_Model{
         return $res->result_array(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
     }
 
+    public function get_wisata_bykota($id){
+        $this->db->select('*');
+        $this->db->from('maininfo wisata');
+        $this->db->join('city kota','kota.idcity=wisata.idcity','left');
+        $this->db->where('wisata.idcity',$id);
+        $this->db->order_by('idmaininfo','desc');
+        $res=$this->db->get(); // Kode ini berfungsi untuk memilih tabel yang akan ditampilkan
+        return $res->result_array(); // Kode ini digunakan untuk mengembalikan hasil operasi $res menjadi sebuah array
+    }
+
     public function count_wisata(){
         $this->db->select('*');
         $this->db->from('maininfo');

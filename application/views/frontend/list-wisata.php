@@ -1,4 +1,4 @@
-<div class="subHeader"><i class="i-home i-small"></i>Ocean / List Tempat</div>
+
 <?php foreach ($pariwisatas as $pariwisata) {
     ?>
 

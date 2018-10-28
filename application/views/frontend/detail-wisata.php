@@ -4,7 +4,7 @@
     
     ?>
 
-    <div class="subHeader"><i class=""></i><?php echo $wisata->title ?></div>
+    <!-- <div class="subHeader"><i class=""></i><?php echo $wisata->title ?></div> -->
             <!-- Banner -->
             <div class="bannerPane">
                 <section class="slider">

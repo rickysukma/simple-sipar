@@ -5,7 +5,7 @@
 		<meta name="author" content="www.frebsite.nl" />
 		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
-		<title>Ocean - Blog</title>
+		<title><?php echo $title ?></title>
 		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>assets/css/flexslider.css" />
 		<link type="text/css" rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css" />

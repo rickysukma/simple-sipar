@@ -50,7 +50,7 @@
               <!-- <a style="float: right;" href="<?php echo base_url('wisata/') ?>create_wisata" class="btn btn-primary btn-sm">Tambah</a> -->
             </div>
             <div class="card-body">
-              <?php echo form_open_multipart('wisata/simpan');?>
+              <?php echo form_open_multipart('wisata/update/'.$wisata->idmaininfo);?>
                 <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
@@ -134,47 +134,80 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <img id="gambar_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image) ?>" height="20%" width="20%" class="img img-thumbnail">
-                      <input type="hidden" name="gambar_" value="<?php echo $wisata->image ?>">
-                      <input name="gambar" type="file"  id="gambar" class="form-control" placeholder="" required="required">
-                      <label for="gambar"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <img id="gambar1_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image1) ?>" height="20%" width="20%" class="img img-thumbnail">
-                      <input type="hidden" name="gambar1_" value="<?php echo $wisata->image1 ?>">
-                      <input name="gambar1" type="file"  id="gambar1" class="form-control" placeholder="">
-                      <label for="gambar1"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <img id="gambar2_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image2) ?>" height="20%" width="20%" class="img img-thumbnail">
-                      <input type="hidden" name="gambar2_" value="<?php echo $wisata->image2 ?>">
-                      <input name="gambar2" type="file"  id="gambar2" class="form-control" placeholder="">
-                      <label for="gambar"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <button class="btn btn-primary btn-block" href="">Tambah</button>
+              <button class="btn btn-primary btn-block" href="">Simpan</button>
               </form>
             </div>
           </div>
           <!-- table -->
+
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-map"></i>
+              Data Image Wisata <?php echo $wisata->title ?>
+              <!-- <a style="float: right;" href="<?php echo base_url('wisata/') ?>create_wisata" class="btn btn-primary btn-sm">Tambah</a> -->
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <div class="form-label-group">
+                      <img id="gambar_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image) ?>" height="20%" width="20%" style="margin-bottom: 10px" class="img img-thumbnail">
+                      <?php echo form_open_multipart('wisata/update_gambar/'.$wisata->idmaininfo);?>
+                      <input type="hidden" name="gambar_" value="<?php echo $wisata->image ?>">
+                      <input name="gambar" type="file"  id="gambar" class="" placeholder="" required="required">
+                      <label for="gambar"></label>
+                      <button class="btn btn- btn-success" href="">Upload</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <div class="form-label-group">
+                      <?php if($wisata->image1 == ""){
+                          ?>
+                          <img id="gambar1_thumb" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" height="20%" width="20%" class="img img-thumbnail">
+                      <?php
+                        } else {
+                      ?>
+                      <img id="gambar1_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image1) ?>" height="20%" width="20%" style="margin-bottom: 10px" class="img img-thumbnail"> <?php } ?>
+                      <?php echo form_open_multipart('wisata/update_gambar1/'.$wisata->idmaininfo);?>
+                      <input type="hidden" name="gambar1_" value="<?php echo $wisata->image1 ?>">
+                      <input required="" name="gambar1" type="file"  id="gambar1" class="" placeholder="">
+                      <label for="gambar1"></label>
+                      <button class="btn btn- btn-success" href="">Upload</button>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-12">
+                    <div class="form-label-group">
+                      <?php 
+                        if($wisata->image2 == ""){
+                          ?>
+                          <img id="gambar2_thumb" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png" height="20%" width="20%" class="img img-thumbnail">
+                      <?php
+                        } else {
+                      ?>
+                      <img id="gambar2_thumb" src="<?php echo base_url('assets/img/pariwisata/'.$wisata->image2) ?>" height="20%" width="20%" class="img img-thumbnail">
+                    <?php } ?>
+                      <?php echo form_open_multipart('wisata/update_gambar2/'.$wisata->idmaininfo);?>
+                      <input type="hidden" name="gambar2_" value="<?php echo $wisata->image2 ?>">
+                      <input required="" name="gambar2" type="file"  id="gambar2" class="" placeholder="">
+                      <label for="gambar2"></label>
+                      <button class="btn btn- btn-success" href="">Upload</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->

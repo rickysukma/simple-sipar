@@ -88,7 +88,7 @@
                             <div class="modal-body">Pilih "<b>Hapus</b>" jika ingin menghapus data ini.</div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                              <a style="color: white" href="<?php echo base_url('kota/delete/').$hapus['idcity'] ?>" class="btn btn-danger">Hapus</a>
+                              <a style="color: white" href="<?php echo base_url('ads/delete/').$hapus['idinfoads'] ?>" class="btn btn-danger">Hapus</a>
                             </div>
                           </div>
                         </div>

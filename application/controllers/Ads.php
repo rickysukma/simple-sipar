@@ -50,12 +50,51 @@ class Ads extends CI_Controller {
 			redirect(base_url('wisata'));
 		} else {
 			$data['iklans'] = $this->maininfo->getinfoads_by($id);
+			$data['wisatas'] = $this->maininfo->get_wisata();
+			$data['kategoris'] = $this->maininfo->getkat();
 			$this->load->view('backend/header');
 			$this->load->view('backend/navbar');
 			$this->load->view('backend/ads/edit-ads',$data);
 			$this->load->view('backend/footer');
 		}
 	}
+
+	public function update_gambar($id){
+
+      $config['upload_path'] = './assets/img/iklan/';
+      $config['allowed_types'] = 'jpg|png|jpeg|gif';
+      $config['max_size'] = '2048';  //2MB max
+      $config['max_width'] = '4480'; // pixel
+      $config['max_height'] = '4480'; // pixel
+      $config['file_name'] = $_FILES['gambar']['name'];
+      	
+      	$this->upload->initialize($config);
+
+      if (!empty($_FILES['gambar']['name'])) {
+
+      		if($this->upload->do_upload('gambar')){
+
+      				$foto = $this->upload->data();
+
+      			$data = array('image' => $foto['file_name']);
+
+      		$this->maininfo->update_gambar_ads($data,$id);
+      		$this->session->set_flashdata('notif','Berhasil mengedit foto');
+      		redirect(base_url('ads/edit/'.$id));
+      		}else{
+      			 $errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('ads/edit/'.$id));
+      		}
+      	}else{
+      		$errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('ads/edit/'.$id));
+      	}
+
+    }
 
 	public function update($id){
 		if (!$id) {
@@ -78,7 +117,7 @@ class Ads extends CI_Controller {
 			redirect(base_url('wisata'));
 		} else {
 			$where = $id;
-			if($this->maininfo->hapus_kota($where)){
+			if($this->maininfo->hapus_iklan($where)){
 				$this->session->set_flashdata('notif','Berhasil menghapus data');
       			redirect(base_url('backend/ads'));
 			} else {

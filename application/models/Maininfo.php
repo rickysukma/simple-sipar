@@ -169,6 +169,21 @@ class Maininfo extends CI_Model{
         return $res;
     }
 
+
+    public function update_gambar($data, $where){
+        $this->db->where('idmaininfo',$where);
+        $res = $this->db->update('maininfo',$data); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
+        return $res;
+    }
+
+    public function update_gambar_ads($data, $where){
+        $this->db->where('idinfoads',$where);
+        $res = $this->db->update('info_ads',$data); // Kode ini digunakan untuk merubah record yang sudah ada dalam sebuah tabel
+        return $res;
+    }
+
+
+
     public function update_wisata($data,$where){
         $this->db->where('idmaininfo',$where);
         $res = $this->db->update('maininfo',$data);
@@ -181,6 +196,13 @@ class Maininfo extends CI_Model{
 
         return;
     }
+
+    public function hapus_iklan($where){
+        $this->db->where('idinfoads',$where);
+        $res = $this->db->delete('info_ads'); // Kode ini digunakan untuk menghapus record yang sudah ada
+
+        return;
+    }    
 
     public function hapus_wisata($where){
         $this->db->where('idmaininfo',$where);

@@ -130,26 +130,6 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <input name="gambar1" type="file"  id="gambar1" class="form-control" placeholder="">
-                      <label for="gambar1"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-row">
-                  <div class="col-md-12">
-                    <div class="form-label-group">
-                      <input name="gambar2" type="file"  id="gambar" class="form-control" placeholder="">
-                      <label for="gambar"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             <button class="btn btn-primary btn-block" href="">Tambah</button>
               </form>
             </div>

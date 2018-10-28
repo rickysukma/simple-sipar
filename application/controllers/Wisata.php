@@ -91,38 +91,20 @@ class Wisata extends CI_Controller {
 		$telp = $this->input->post('notelp');
 		$link = $this->input->post('link');
 
-	  $config1['upload_path'] = './assets/img/pariwisata/';
-      $config1['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config1['max_size'] = '2048';  //2MB max
-      $config1['max_width'] = '4480'; // pixel
-      $config1['max_height'] = '4480'; // pixel
-      $config1['file_name'] = $_FILES['gambar']['name'];
-
-      $config2['upload_path'] = './assets/img/pariwisata/';
-      $config2['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config2['max_size'] = '2048';  //2MB max
-      $config2['max_width'] = '4480'; // pixel
-      $config2['max_height'] = '4480'; // pixel
-      $config2['file_name'] = $_FILES['gambar1']['name'];
-
-      $config3['upload_path'] = './assets/img/pariwisata/';
-      $config3['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config3['max_size'] = '2048';  //2MB max
-      $config3['max_width'] = '4480'; // pixel
-      $config3['max_height'] = '4480'; // pixel
-      $config3['file_name'] = $_FILES['gambar2']['name'];
-
-      	$this->upload->initialize($config1);
-      	$this->upload->initialize($config2);
-      	$this->upload->initialize($config3);
+	  $config['upload_path'] = './assets/img/pariwisata/';
+      $config['allowed_types'] = 'jpg|png|jpeg|gif';
+      $config['max_size'] = '2048';  //2MB max
+      $config['max_width'] = '4480'; // pixel
+      $config['max_height'] = '4480'; // pixel
+      $config['file_name'] = $_FILES['gambar']['name'];
+      	
+      	$this->upload->initialize($config);
 
       if (!empty($_FILES['gambar']['name'])) {
 
       		if($this->upload->do_upload('gambar')){
 
-      				$foto1 = $this->upload->data();
-      				$foto2 = $this->upload->data();
-      				$foto3 = $this->upload->data();
+      				$foto = $this->upload->data();
 
       			$data = array('idcity' => $kota,
       						  'title' => $title,
@@ -132,9 +114,9 @@ class Wisata extends CI_Controller {
       						  'weekend' => $weekend,
       						  'telp' => $telp,
       						  'link' => $link,
-      						  'image' => $foto1['file_name'],
-      						  'image1' => $foto2['file_name'],
-      						  'image2' => $foto3['file_name'],
+      						  'image' => $foto['file_name'],
+      						  'image1' => '',
+      						  'image2' => '',
       						  'image3' => '',
       						  'image4' => '',
       						  'image5' => '');
@@ -166,42 +148,7 @@ class Wisata extends CI_Controller {
 		$weekend = $this->input->post('weekend');
 		$telp = $this->input->post('notelp');
 		$link = $this->input->post('link');
-		$image = $this->input->post('gambar');
-		$image1 = $this->input->post('gambar1');
-		$image2 = $this->input->post('gambar2');
 
-	  $config1['upload_path'] = './assets/img/pariwisata/';
-      $config1['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config1['max_size'] = '2048';  //2MB max
-      $config1['max_width'] = '4480'; // pixel
-      $config1['max_height'] = '4480'; // pixel
-      $config1['file_name'] = $_FILES['gambar']['name'];
-
-      $config2['upload_path'] = './assets/img/pariwisata/';
-      $config2['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config2['max_size'] = '2048';  //2MB max
-      $config2['max_width'] = '4480'; // pixel
-      $config2['max_height'] = '4480'; // pixel
-      $config2['file_name'] = $_FILES['gambar1']['name'];
-
-      $config3['upload_path'] = './assets/img/pariwisata/';
-      $config3['allowed_types'] = 'jpg|png|jpeg|gif';
-      $config3['max_size'] = '2048';  //2MB max
-      $config3['max_width'] = '4480'; // pixel
-      $config3['max_height'] = '4480'; // pixel
-      $config3['file_name'] = $_FILES['gambar2']['name'];
-
-      	$this->upload->initialize($config1);
-      	$this->upload->initialize($config2);
-      	$this->upload->initialize($config3);
-
-      if (!empty($_FILES['gambar']['name'])) {
-
-      		if($this->upload->do_upload('gambar')){
-
-      				$foto1 = $this->upload->data();
-      				$foto2 = $this->upload->data();
-      				$foto3 = $this->upload->data();
 
       			$data = array('idcity' => $kota,
       						  'title' => $title,
@@ -210,16 +157,40 @@ class Wisata extends CI_Controller {
       						  'weekday' => $weekday,
       						  'weekend' => $weekend,
       						  'telp' => $telp,
-      						  'link' => $link,
-      						  'image' => $foto1['file_name'],
-      						  'image1' => $foto2['file_name'],
-      						  'image2' => $foto3['file_name'],
-      						  'image3' => '',
-      						  'image4' => '',
-      						  'image5' => '');
+      						  'link' => $link);
 
-      		$this->maininfo->update_maininfo($data,$id);
-      		$this->session->set_flashdata('notif','Berhasil mengedit data');
+      		if($this->maininfo->update_wisata($data,$id)){
+      			$this->session->set_flashdata('notif','Berhasil mengedit data');
+      			redirect(base_url('wisata/edit/'.$id));
+      		}else{
+      			 $errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('wisata/edit/'.$id));
+      		}
+      	}
+
+    public function update_gambar($id){
+
+      $config['upload_path'] = './assets/img/pariwisata/';
+      $config['allowed_types'] = 'jpg|png|jpeg|gif';
+      $config['max_size'] = '2048';  //2MB max
+      $config['max_width'] = '4480'; // pixel
+      $config['max_height'] = '4480'; // pixel
+      $config['file_name'] = $_FILES['gambar']['name'];
+      	
+      	$this->upload->initialize($config);
+
+      if (!empty($_FILES['gambar']['name'])) {
+
+      		if($this->upload->do_upload('gambar')){
+
+      				$foto = $this->upload->data();
+
+      			$data = array('image' => $foto['file_name']);
+
+      		$this->maininfo->update_gambar($data,$id);
+      		$this->session->set_flashdata('notif','Berhasil mengedit foto');
       		redirect(base_url('wisata/edit/'.$id));
       		}else{
       			 $errors = array("error" => $this->upload->display_errors());
@@ -234,5 +205,83 @@ class Wisata extends CI_Controller {
       			redirect(base_url('wisata/edit/'.$id));
       	}
 
-	}
+    }
+
+
+    public function update_gambar1($id){
+
+      $config['upload_path'] = './assets/img/pariwisata/';
+      $config['allowed_types'] = 'jpg|png|jpeg|gif';
+      $config['max_size'] = '2048';  //2MB max
+      $config['max_width'] = '4480'; // pixel
+      $config['max_height'] = '4480'; // pixel
+      $config['file_name'] = $_FILES['gambar1']['name'];
+      	
+      	$this->upload->initialize($config);
+
+      if (!empty($_FILES['gambar1']['name'])) {
+
+      		if($this->upload->do_upload('gambar1')){
+
+      				$foto = $this->upload->data();
+
+      			$data = array('image1' => $foto['file_name']);
+
+      		$this->maininfo->update_gambar($data,$id);
+      		$this->session->set_flashdata('notif','Berhasil mengedit foto');
+      		redirect(base_url('wisata/edit/'.$id));
+      		}else{
+      			 $errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('wisata/edit/'.$id));
+      		}
+      	}else{
+      		$errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('wisata/edit/'.$id));
+      	}
+
+    }
+
+
+    public function update_gambar2($id){
+
+      $config['upload_path'] = './assets/img/pariwisata/';
+      $config['allowed_types'] = 'jpg|png|jpeg|gif';
+      $config['max_size'] = '2048';  //2MB max
+      $config['max_width'] = '4480'; // pixel
+      $config['max_height'] = '4480'; // pixel
+      $config['file_name'] = $_FILES['gambar2']['name'];
+      	
+      	$this->upload->initialize($config);
+
+      if (!empty($_FILES['gambar2']['name'])) {
+
+      		if($this->upload->do_upload('gambar2')){
+
+      				$foto = $this->upload->data();
+
+      			$data = array('image2' => $foto['file_name']);
+
+      		$this->maininfo->update_gambar($data,$id);
+      		$this->session->set_flashdata('notif','Berhasil mengedit foto');
+      		redirect(base_url('wisata/edit/'.$id));
+      		}else{
+      			 $errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('wisata/edit/'.$id));
+      		}
+      	}else{
+      		$errors = array("error" => $this->upload->display_errors());
+      			 $this->session->set_flashdata('gagal',$errors['error']);
+
+      			redirect(base_url('wisata/edit/'.$id));
+      	}
+
+    }
+
+
 }
